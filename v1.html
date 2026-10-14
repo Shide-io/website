@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -420,7 +422,7 @@ details[open] .faq-sign{transform:rotate(45deg)}
   </div>
 </footer>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;demoEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact@shide.fr&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;linkedinUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.linkedin.com/company/shide/?viewAsMember=true&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact@shide.eu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;linkedinUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.linkedin.com/company/shide/?viewAsMember=true&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;}}">
 class Component extends DCLogic {
   state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false };
   componentDidMount() {
@@ -430,7 +432,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
   renderVals() {
-    const email = this.props.demoEmail ?? '[ADRESSE E-MAIL]';
+    const email = this.props.demoEmail || 'contact@shide.eu';
     const booking = (this.props.bookingUrl ?? '').trim();
     const mail = (subject, body) => `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     const isDesktop = this.state.w >= 1080;
