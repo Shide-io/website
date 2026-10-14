@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://formsubmit.co; manifest-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="assets/framebust.js"></script>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script src="assets/vendor/react.production.min.js"></script>
+<script src="assets/vendor/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -12,9 +17,6 @@
 <helmet>
 <title>Shide — Empêchez les fuites de données vers les IA génératives</title>
 <meta name="description" content="Shide bloque les données sensibles avant qu'elles ne partent vers ChatGPT, Copilot, Gemini, Claude, Mistral… Solution française installée sur vos serveurs.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#fff;color:#141A2E;font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -29,7 +31,7 @@ details[open] .faq-sign{transform:rotate(45deg)}
 </helmet>
 
 <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #ECEEF4">
-  <nav aria-label="Navigation principale" style="max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:36px">
+  <nav aria-label="Navigation principale" style="max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,24px);height:68px;display:flex;align-items:center;gap:clamp(12px,3vw,36px)">
     <a href="#top" aria-label="Shide — accueil" style="display:flex;align-items:center;gap:8px;color:#141A2E;text-decoration:none">
       <img src="assets/logo_shide.png" alt="" style="width:30px;height:30px;object-fit:contain;display:block">
       <span style="font-weight:700;font-size:21px;letter-spacing:-0.01em">Shide</span>
@@ -44,14 +46,14 @@ details[open] .faq-sign{transform:rotate(45deg)}
       </div>
     </sc-if>
     <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
-      <a href="{{ demoHref }}" style="background:#2F5BEA;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Demander une démo</a>
+      <a href="{{ demoHref }}" style="background:#2F5BEA;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none"><sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">Demander une démo</sc-if><sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">Démo</sc-if></a>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
         <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="menu-mobile" aria-label="Ouvrir le menu" style="background:#F2F4FA;border:none;border-radius:999px;height:42px;padding:0 16px;font:inherit;font-size:15px;font-weight:500;color:#141A2E;cursor:pointer">Menu</button>
       </sc-if>
     </div>
   </nav>
   <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
-    <div id="menu-mobile" onClick="{{ closeMenu }}" style="display:grid;padding:8px 24px 20px;font-size:17px;font-weight:500">
+    <div id="menu-mobile" onClick="{{ closeMenu }}" style="display:grid;background:#fff;padding:8px 24px 20px;font-size:17px;font-weight:500">
       <a href="#fonctionnement" style="color:#141A2E;padding:12px 0">Fonctionnement</a>
       <a href="#detection" style="color:#141A2E;padding:12px 0">Détection</a>
       <a href="#supervision" style="color:#141A2E;padding:12px 0">Supervision</a>
@@ -75,7 +77,8 @@ details[open] .faq-sign{transform:rotate(45deg)}
 
     <div style="margin:clamp(48px,6vw,72px) auto 0;padding:clamp(12px,2vw,20px);border-radius:28px;background:linear-gradient(135deg,#2F5BEA 0%,#6B8BFF 100%);box-shadow:0 30px 80px -30px rgba(47,91,234,0.55)">
       <figure role="img" aria-label="Console Shide : liste des règles de détection (adresse e-mail, téléphone, sécurité sociale, IBAN, carte bancaire) avec leur action." style="margin:0;border-radius:16px;background:#111316;overflow-x:auto;overflow-y:hidden;text-align:left">
-        <div style="display:flex;min-width:940px;font-size:12.5px;color:#C9CDD4">
+        <div style="display:flex;min-width:{{ mock.minW }};font-size:12.5px;color:#C9CDD4">
+          <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
           <div style="width:200px;flex:none;background:#16181C;border-right:1px solid #23262C;padding:16px 10px;display:flex;flex-direction:column;gap:2px">
             <div style="display:flex;align-items:center;gap:8px;padding:0 8px 18px"><img src="assets/logo_shide.png" alt="" style="width:22px;height:22px;object-fit:contain;display:block"><span style="font-weight:700;letter-spacing:0.12em;color:#fff;font-size:11.5px">SHIDE</span></div>
             <div style="display:flex;justify-content:space-between;padding:8px 10px;border-radius:8px"><span>Données sensibles</span><span style="color:#7D838E">19</span></div>
@@ -85,17 +88,18 @@ details[open] .faq-sign{transform:rotate(45deg)}
             <div style="padding:8px 10px">Journal d'audit</div>
             <div style="margin-top:auto;padding:16px 10px 0;display:flex;align-items:center;gap:7px;font-size:11px;color:#7D838E"><span style="width:7px;height:7px;border-radius:50%;background:#3CC47A;display:block"></span>Proxy actif</div>
           </div>
-          <div style="flex:1;padding:20px 24px 4px">
+          </sc-if>
+          <div style="flex:1;min-width:0;padding:{{ mock.pad }}">
             <div style="font-size:18px;font-weight:600;color:#fff">Règles de détection</div>
             <div style="color:#8C929C;margin-top:4px">Appliquées au texte et aux fichiers envoyés aux LLM surveillés.</div>
             <div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11.5px">
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:9px 0;color:#7D838E;font-size:10px;letter-spacing:0.1em;border-bottom:1px solid #23262C"><span>#</span><span>NOM</span><span>MOTIF</span><span>ACTION</span></div>
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">1</span><span style="color:#fff">EMAIL</span><span style="color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">2</span><span style="color:#fff">PHONE_FR</span><span style="color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">(?:\+33|0033|0)[1-9](?:[\s.-]?\d{2}){4}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">3</span><span style="color:#fff">SECU_SOCIALE_FR</span><span style="color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">\b[12]\s?\d{2}\s?(?:0[1-9]|1[0-2])\s?\d{2}\s?\d{3}\s?\d{3}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">7</span><span style="color:#fff">PLAQUE_IMMAT_FR</span><span style="color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">\b[A-HJ-NP-TV-Z]{2}[-\s]?\d{3}[-\s]?[A-HJ-NP-TV-Z]{2}\b</span><span style="color:#E3B341;background:#221C10;padding:2px 7px;border-radius:999px;justify-self:start">LOG</span></div>
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">13</span><span style="color:#fff">IBAN</span><span style="color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">\b[A-Z]{2}\d{2}[\s]?(?:[A-Z0-9]{4}[\s]?){3,7}[A-Z0-9]{1,4}\b</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
-              <div style="display:grid;grid-template-columns:24px 170px 1fr 72px;gap:14px;padding:10px 0;align-items:center"><span style="color:#6B717C">14</span><span style="color:#fff">CREDIT_CARD</span><span style="color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">(?:4[0-9]{3}|5[1-5][0-9]{2})(?:[ .-]?[0-9]{4}){3}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:9px 0;color:#7D838E;font-size:10px;letter-spacing:0.1em;border-bottom:1px solid #23262C"><span>#</span><span>NOM</span><span style="display:{{ mock.motif }}">MOTIF</span><span>ACTION</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">1</span><span style="color:#fff">EMAIL</span><span style="display:{{ mock.motif }};color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">2</span><span style="color:#fff">PHONE_FR</span><span style="display:{{ mock.motif }};color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">(?:\+33|0033|0)[1-9](?:[\s.-]?\d{2}){4}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">3</span><span style="color:#fff">SECU_SOCIALE_FR</span><span style="display:{{ mock.motif }};color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">\b[12]\s?\d{2}\s?(?:0[1-9]|1[0-2])\s?\d{2}\s?\d{3}\s?\d{3}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">7</span><span style="color:#fff">PLAQUE_IMMAT_FR</span><span style="display:{{ mock.motif }};color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">\b[A-HJ-NP-TV-Z]{2}[-\s]?\d{3}[-\s]?[A-HJ-NP-TV-Z]{2}\b</span><span style="color:#E3B341;background:#221C10;padding:2px 7px;border-radius:999px;justify-self:start">LOG</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:10px 0;border-bottom:1px solid #1D2025;align-items:center"><span style="color:#6B717C">13</span><span style="color:#fff">IBAN</span><span style="display:{{ mock.motif }};color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">\b[A-Z]{2}\d{2}[\s]?(?:[A-Z0-9]{4}[\s]?){3,7}[A-Z0-9]{1,4}\b</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
+              <div style="display:grid;grid-template-columns:{{ mock.cols }};gap:{{ mock.gap }};padding:10px 0;align-items:center"><span style="color:#6B717C">14</span><span style="color:#fff">CREDIT_CARD</span><span style="display:{{ mock.motif }};color:#8C929C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">(?:4[0-9]{3}|5[1-5][0-9]{2})(?:[ .-]?[0-9]{4}){3}</span><span style="color:#F07A74;background:#2A1616;padding:2px 7px;border-radius:999px;justify-self:start">BLOCK</span></div>
             </div>
           </div>
         </div>
@@ -322,8 +326,7 @@ details[open] .faq-sign{transform:rotate(45deg)}
     <div style="flex:1 1 320px;color:#fff">
       <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.2vw,52px);line-height:1.06;letter-spacing:-0.03em;text-wrap:balance">Voyez ce qui part vers les IA. Arrêtez ce qui ne doit pas sortir.</h2>
       <p style="margin:20px 0 0;font-size:18px;line-height:1.6;color:#E4EAFF;max-width:460px">Demandez une démo de 15 minutes : Shide en fonctionnement, et vos questions techniques.</p>
-      <p style="margin:24px 0 0;font-size:15px;color:#E4EAFF">Nous répondons sous 24 h ouvrées.</p>
-    </div>
+          </div>
     <div style="flex:1.2 1 380px;min-width:0;background:#fff;border-radius:24px;padding:clamp(22px,3.5vw,36px);box-shadow:0 30px 60px -30px rgba(13,26,71,0.5)">
       <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
         <div role="status" style="display:grid;gap:12px;justify-items:center;text-align:center;padding:40px 8px">
@@ -438,6 +441,9 @@ class Component extends DCLogic {
       sending: this.state.status === 'sending',
       submitLabel: this.state.status === 'sending' ? 'Envoi…' : 'Demander une démo',
       linkedinHref: this.props.linkedinUrl || 'https://www.linkedin.com/company/shide/',
+      mock: isDesktop
+        ? { minW: '940px', pad: '20px 24px 4px', cols: '24px 170px 1fr 72px', gap: '14px', motif: 'block' }
+        : { minW: '0', pad: '16px 14px 4px', cols: '20px minmax(0,1fr) 64px', gap: '10px', motif: 'none' },
     };
   }
 }
