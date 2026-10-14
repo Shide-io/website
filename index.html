@@ -158,9 +158,9 @@ details[open] .faq-sign{transform:rotate(45deg)}
       </li>
       <li style="background:#fff;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:24px">
         <div style="background:#F5F7FC;border-radius:16px;padding:18px;min-height:170px;display:grid;align-content:center">
-          <div style="background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 6px 20px -8px rgba(20,26,46,0.18)">
-            <div style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:#C0362C"><img src="assets/logo_shide.png" alt="" style="width:18px;height:18px;object-fit:contain;display:block">Message non envoyé</div>
-            <div style="margin-top:5px;font-size:14px;line-height:1.45;color:#4A5268">Il contient un IBAN. Retirez-le, puis renvoyez votre demande.</div>
+          <div style="background:#2F5BEA;color:#fff;border-radius:16px 16px 16px 4px;padding:14px 16px">
+            <div style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px"><span style="width:20px;height:20px;border-radius:50%;background:#fff;color:#2F5BEA;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none">!</span>Message non envoyé</div>
+            <div style="margin-top:6px;font-size:14px;line-height:1.45;color:#E4EAFF">Il contient un IBAN. Retirez-le, puis renvoyez votre demande.</div>
           </div>
         </div>
         <div>
@@ -171,11 +171,11 @@ details[open] .faq-sign{transform:rotate(45deg)}
       </li>
       <li style="background:#fff;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:24px">
         <div style="background:#F5F7FC;border-radius:16px;padding:16px;min-height:170px;display:grid;align-content:center">
-          <div style="background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 6px 20px -8px rgba(20,26,46,0.18);font-size:13px">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-weight:700;font-size:14px">Tableau de bord RSSI</span><span style="color:#6A7186;font-size:12px">Aujourd'hui</span></div>
-            <div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0 6px;margin-top:6px;border-bottom:1px solid #EEF0F5"><span style="color:#4A5268">09:12 · chatgpt.com</span><span style="color:#C0362C;font-weight:600">IBAN · bloqué</span></div>
-            <div style="display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #EEF0F5"><span style="color:#4A5268">08:47 · claude.ai</span><span style="color:#C0362C;font-weight:600">Contrat · bloqué</span></div>
-            <div style="display:flex;justify-content:space-between;gap:10px;padding:6px 0 0"><span style="color:#4A5268">08:15 · gemini.google.com</span><span style="color:#B7791F;font-weight:600">Plaque · journalisé</span></div>
+          <div style="background:#2F5BEA;color:#fff;border-radius:16px 16px 4px 16px;padding:14px 16px;font-size:13px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-weight:700;font-size:14px">Tableau de bord RSSI</span><span style="color:#C9D5FF;font-size:12px">Aujourd'hui</span></div>
+            <div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0 6px;margin-top:6px;border-bottom:1px solid rgba(255,255,255,0.22)"><span style="color:#E4EAFF">09:12 · chatgpt.com</span><span style="color:#fff;font-weight:600">IBAN · bloqué</span></div>
+            <div style="display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.22)"><span style="color:#E4EAFF">08:47 · claude.ai</span><span style="color:#fff;font-weight:600">Contrat · bloqué</span></div>
+            <div style="display:flex;justify-content:space-between;gap:10px;padding:6px 0 0"><span style="color:#E4EAFF">08:15 · gemini.google.com</span><span style="color:#C9D5FF;font-weight:600">Plaque · journalisé</span></div>
           </div>
         </div>
         <div>
@@ -313,15 +313,44 @@ details[open] .faq-sign{transform:rotate(45deg)}
         <p style="margin:0 0 22px;font-size:16px;line-height:1.65;color:#4A5268">57 services chez 34 éditeurs, dont ChatGPT, Copilot, Gemini, Claude, Mistral, Grok, DeepSeek ou Perplexity, en version web et API. La liste est modifiable depuis la console.</p>
       </details>
     </div>
-    <p style="margin:28px 0 0;text-align:center;font-size:16px;color:#4A5268">Une autre question ? <a href="{{ mailHref }}">Écrivez-nous</a>.</p>
+    <p style="margin:28px 0 0;text-align:center;font-size:16px;color:#4A5268">Une autre question ? <a href="#contact">Écrivez-nous</a>.</p>
   </div>
 </section>
 
-<section data-screen-label="Appel à l'action final" style="padding:0 24px clamp(64px,8vw,96px)">
-  <div style="max-width:1200px;margin:0 auto;border-radius:32px;background:linear-gradient(135deg,#2F5BEA 0%,#5B7CFF 100%);color:#fff;text-align:center;padding:clamp(48px,8vw,96px) 24px">
-    <h2 style="margin:0 auto;font-weight:700;font-size:clamp(32px,4.6vw,56px);line-height:1.06;letter-spacing:-0.03em;max-width:820px;text-wrap:balance">Voyez ce qui part vers les IA. Arrêtez ce qui ne doit pas sortir.</h2>
-    <p style="margin:20px auto 0;font-size:18px;line-height:1.6;color:#E4EAFF;max-width:540px">15 minutes pour voir Shide en fonctionnement et poser vos questions techniques.</p>
-    <a href="{{ demoHref }}" style="display:inline-block;margin-top:32px;background:#fff;color:#1F45CF;padding:16px 28px;border-radius:999px;font-weight:700;font-size:16px;white-space:nowrap" style-hover="background:#EEF2FF;color:#1F45CF;text-decoration:none">Demander une démo</a>
+<section id="contact" data-screen-label="Contact" style="scroll-margin-top:68px;padding:0 24px clamp(64px,8vw,96px)">
+  <div style="max-width:1200px;margin:0 auto;border-radius:32px;background:linear-gradient(135deg,#2F5BEA 0%,#5B7CFF 100%);padding:clamp(28px,6vw,72px);display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start">
+    <div style="flex:1 1 320px;color:#fff">
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.2vw,52px);line-height:1.06;letter-spacing:-0.03em;text-wrap:balance">Voyez ce qui part vers les IA. Arrêtez ce qui ne doit pas sortir.</h2>
+      <p style="margin:20px 0 0;font-size:18px;line-height:1.6;color:#E4EAFF;max-width:460px">Demandez une démo de 15 minutes : Shide en fonctionnement, et vos questions techniques.</p>
+      <p style="margin:24px 0 0;font-size:15px;color:#E4EAFF">Nous répondons sous 24 h ouvrées.</p>
+    </div>
+    <div style="flex:1.2 1 380px;min-width:0;background:#fff;border-radius:24px;padding:clamp(22px,3.5vw,36px);box-shadow:0 30px 60px -30px rgba(13,26,71,0.5)">
+      <sc-if value="{{ formSent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="display:grid;gap:12px;justify-items:center;text-align:center;padding:40px 8px">
+          <span style="width:52px;height:52px;border-radius:50%;background:#E6ECFF;color:#2448D8;display:grid;place-items:center;font-size:24px;font-weight:700">✓</span>
+          <h3 style="margin:0;font-size:24px;font-weight:700">Merci, c'est envoyé.</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#4A5268;max-width:360px">Nous revenons vers vous rapidement pour fixer un créneau.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" style="display:grid;gap:16px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Nom et prénom<input name="nom" required="" autocomplete="name" value="{{ f.nom }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">E-mail professionnel<input name="email" type="email" required="" autocomplete="email" value="{{ f.email }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Entreprise<input name="entreprise" required="" autocomplete="organization" value="{{ f.entreprise }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Fonction<select name="fonction" value="{{ f.fonction }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff;appearance:auto" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"><option value="">Choisir…</option><option>DSI</option><option>RSSI</option><option>DPO</option><option>Direction générale</option><option>Autre</option></select></label>
+          </div>
+          <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Message <span style="font-weight:400;color:#6A7186">(facultatif)</span><textarea name="message" rows="4" value="{{ f.message }}" onChange="{{ onField }}" placeholder="Nombre de postes, contexte, questions…" style="width:100%;border:1px solid #D8DCE6;border-radius:12px;padding:12px 14px;font:inherit;font-size:16px;color:#141A2E;resize:vertical" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></textarea></label>
+          <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="margin:0;font-size:14.5px;color:#C0362C">L'envoi a échoué. Réessayez ou écrivez-nous à <a href="{{ mailHref }}">{{ email }}</a>.</p>
+          </sc-if>
+          <button type="submit" disabled="{{ sending }}" style="height:54px;border:none;border-radius:999px;background:#2F5BEA;color:#fff;font:inherit;font-size:16px;font-weight:700;cursor:pointer" style-hover="background:#1F45CF">{{ submitLabel }}</button>
+          <p style="margin:0;font-size:12.5px;line-height:1.5;color:#6A7186">Vos informations servent uniquement à vous recontacter au sujet de Shide.</p>
+        </form>
+      </sc-if>
+    </div>
   </div>
 </section>
 </main>
@@ -360,9 +389,25 @@ details[open] .faq-sign{transform:rotate(45deg)}
   </div>
 </footer>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;demoEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact@shide.eu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;linkedinUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact@shide.eu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;linkedinUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;}}">
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, f: { nom: '', email: '', entreprise: '', fonction: '', message: '' }, status: 'idle' };
+  async submit(e) {
+    e.preventDefault();
+    const f = this.state.f, email = this.props.demoEmail || 'contact@shide.eu';
+    const endpoint = (this.props.formEndpoint || '').trim();
+    if (!endpoint) {
+      const body = `Nom : ${f.nom}\nE-mail : ${f.email}\nEntreprise : ${f.entreprise}\nFonction : ${f.fonction}\n\n${f.message}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent('Demande de démo Shide — ' + f.entreprise)}&body=${encodeURIComponent(body)}`;
+      this.setState({ status: 'sent' });
+      return;
+    }
+    this.setState({ status: 'sending' });
+    try {
+      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...f, _subject: 'Demande de démo Shide — ' + f.entreprise }) });
+      this.setState({ status: r.ok ? 'sent' : 'error' });
+    } catch (err) { this.setState({ status: 'error' }); }
+  }
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth });
     window.addEventListener('resize', this.onResize);
@@ -379,8 +424,16 @@ class Component extends DCLogic {
       showMobileMenu: !isDesktop && this.state.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
-      demoHref: booking || `mailto:${email}?subject=${encodeURIComponent('Demande de démo Shide (15 minutes)')}&body=${encodeURIComponent("Bonjour,\n\nJe souhaite une démonstration de Shide.\n\nEntreprise :\nFonction :\nNombre de postes :\n")}`,
+      demoHref: booking || '#contact',
       mailHref: `mailto:${email}`,
+      f: this.state.f,
+      onField: (e) => { const { name, value } = e.target; this.setState(s => ({ f: { ...s.f, [name]: value } })); },
+      submitForm: (e) => this.submit(e),
+      formSent: this.state.status === 'sent',
+      formOpen: this.state.status !== 'sent',
+      formError: this.state.status === 'error',
+      sending: this.state.status === 'sending',
+      submitLabel: this.state.status === 'sending' ? 'Envoi…' : 'Demander une démo',
       linkedinHref: this.props.linkedinUrl || 'https://www.linkedin.com/company/shide/',
     };
   }
