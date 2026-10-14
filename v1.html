@@ -29,7 +29,7 @@ details[open] .faq-sign{transform:rotate(45deg)}
 </helmet>
 
 <header style="position:sticky;top:0;z-index:50;background:rgba(246,247,249,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #E3E6EC">
-  <nav aria-label="Navigation principale" style="max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">
+  <nav aria-label="Navigation principale" style="max-width:1180px;margin:0 auto;padding:14px clamp(16px,4vw,24px);display:flex;align-items:center;gap:clamp(12px,3vw,28px)">
     <a href="#top" aria-label="Shide — accueil" style="display:flex;align-items:center;gap:10px;color:#0E1526;text-decoration:none">
       <span style="width:34px;height:34px;display:block;flex:none"><img src="assets/logo_shide.png" alt="" style="width:34px;height:34px;object-fit:contain;display:block"></span>
       <span style="font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.02em">Shide</span>
@@ -47,7 +47,7 @@ details[open] .faq-sign{transform:rotate(45deg)}
       </div>
     </sc-if>
     <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
-      <a href="{{ demoHref }}" style="background:#2F5BEA;color:#fff;padding:10px 16px;border-radius:8px;font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap" style-hover="background:#2448D8;color:#fff;text-decoration:none">Demander une démo</a>
+      <a href="{{ demoHref }}" style="background:#2F5BEA;color:#fff;padding:10px 16px;border-radius:8px;font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap" style-hover="background:#2448D8;color:#fff;text-decoration:none"><sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">Demander une démo</sc-if><sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">Démo</sc-if></a>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
         <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="menu-mobile" aria-label="Ouvrir le menu" style="background:#fff;border:1px solid #D5D9E1;border-radius:8px;height:40px;padding:0 12px;font:inherit;font-size:14px;color:#0E1526;cursor:pointer">Menu</button>
       </sc-if>
