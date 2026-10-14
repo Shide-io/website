@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <script src="./support.js"></script>
 </head>
@@ -334,6 +334,7 @@ details[open] .faq-sign{transform:rotate(45deg)}
       </sc-if>
       <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
         <form onSubmit="{{ submitForm }}" style="display:grid;gap:16px">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" value="{{ f._honey }}" onChange="{{ onField }}" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
             <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Nom et prénom<input name="nom" required="" autocomplete="name" value="{{ f.nom }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
             <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">E-mail professionnel<input name="email" type="email" required="" autocomplete="email" value="{{ f.email }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
@@ -391,11 +392,12 @@ details[open] .faq-sign{transform:rotate(45deg)}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;demoEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contact@shide.eu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;},&quot;linkedinUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Liens&quot;}}">
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, f: { nom: '', email: '', entreprise: '', fonction: '', message: '' }, status: 'idle' };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, f: { nom: '', email: '', entreprise: '', fonction: '', message: '', _honey: '' }, status: 'idle' };
   async submit(e) {
     e.preventDefault();
     const f = this.state.f, email = this.props.demoEmail || 'contact@shide.eu';
-    const endpoint = (this.props.formEndpoint || '').trim();
+    const endpoint = (this.props.formEndpoint || `https://formsubmit.co/ajax/${email}`).trim();
+    if (f._honey) { this.setState({ status: 'sent' }); return; }
     if (!endpoint) {
       const body = `Nom : ${f.nom}\nE-mail : ${f.email}\nEntreprise : ${f.entreprise}\nFonction : ${f.fonction}\n\n${f.message}`;
       window.location.href = `mailto:${email}?subject=${encodeURIComponent('Demande de démo Shide — ' + f.entreprise)}&body=${encodeURIComponent(body)}`;
@@ -404,8 +406,9 @@ class Component extends DCLogic {
     }
     this.setState({ status: 'sending' });
     try {
-      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...f, _subject: 'Demande de démo Shide — ' + f.entreprise }) });
-      this.setState({ status: r.ok ? 'sent' : 'error' });
+      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...f, _template: 'table', _subject: 'Demande de démo Shide — ' + f.entreprise }) });
+      const d = await r.json().catch(() => ({}));
+      this.setState({ status: r.ok && String(d.success) === 'true' ? 'sent' : 'error' });
     } catch (err) { this.setState({ status: 'error' }); }
   }
   componentDidMount() {
