@@ -63,7 +63,7 @@ summary:hover>span:first-child{color:#2448D8}
       </div>
     </sc-if>
     <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
-      <a href="#contact" onClick="{{ choosePilot }}" style="background:#2F5BEA;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Devenir pilote</a>
+      <a href="#contact" style="background:#2F5BEA;color:#fff;padding:11px 20px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Devenir pilote</a>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
         <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="menu-mobile" aria-label="Ouvrir le menu" style="background:#F2F4FA;border:none;border-radius:999px;height:42px;padding:0 16px;font:inherit;font-size:16px;font-weight:500;color:#141A2E;cursor:pointer">Menu</button>
       </sc-if>
@@ -88,8 +88,8 @@ summary:hover>span:first-child{color:#2448D8}
     <h1 style="margin:0 auto;font-weight:700;font-size:clamp(34px,8.6vw,92px);line-height:1;letter-spacing:-0.04em;max-width:1000px;text-wrap:balance">Utilisez l'IA. Gardez vos données.</h1>
     <p style="margin:28px auto 0;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#3D4560;max-width:620px;text-wrap:pretty">Shide empêche les fuites de données de votre entreprise vers ChatGPT, Copilot, Gemini et les autres IA génératives. Une solution française, installée sur vos serveurs, qui vérifie textes et fichiers avant qu'ils sortent.</p>
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px">
-      <a href="#contact" onClick="{{ choosePilot }}" style="background:#2F5BEA;color:#fff;padding:16px 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Devenir entreprise pilote</a>
-      <a href="#contact" onClick="{{ chooseDemo }}" style="background:#EEF2FF;color:#141A2E;padding:16px 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#DCE4FF;color:#141A2E;text-decoration:none">Demander une démo de 15 minutes</a>
+      <a href="#contact" style="background:#2F5BEA;color:#fff;padding:16px 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Devenir entreprise pilote</a>
+      <a href="#contact" style="background:#EEF2FF;color:#141A2E;padding:16px 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#DCE4FF;color:#141A2E;text-decoration:none">Demander une démo de 15 minutes</a>
     </div>
     <p style="margin:18px 0 0;font-size:16px"><a href="#fonctionnement">Voir comment ça marche</a></p>
 
@@ -343,7 +343,7 @@ summary:hover>span:first-child{color:#2448D8}
       </article>
     </div>
     <div style="margin-top:44px;display:grid;gap:14px;justify-items:center;text-align:center">
-      <a href="#contact" onClick="{{ choosePilot }}" style="background:#2F5BEA;color:#fff;padding:16px 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Devenir entreprise pilote</a>
+      <a href="#contact" style="background:#2F5BEA;color:#fff;padding:16px 28px;border-radius:999px;font-weight:600;font-size:16px;white-space:nowrap" style-hover="background:#1F45CF;color:#fff;text-decoration:none">Devenir entreprise pilote</a>
       <p style="margin:0;font-size:16px;color:#3D4560">Places limitées.</p>
     </div>
   </div>
@@ -400,35 +400,21 @@ summary:hover>span:first-child{color:#2448D8}
           <p style="margin:0;font-size:16px;line-height:1.6;color:#4A5268;max-width:360px">Nous revenons vers vous rapidement pour fixer un créneau.</p>
         </div>
       </sc-if>
-      <sc-if value="{{ formMailto }}" hint-placeholder-val="{{ false }}">
-        <div role="status" style="display:grid;gap:12px;justify-items:center;text-align:center;padding:40px 8px">
-          <h3 style="margin:0;font-size:24px;font-weight:700">Votre messagerie s'ouvre.</h3>
-          <p style="margin:0;font-size:16px;line-height:1.6;color:#4A5268;max-width:380px">Votre demande est prête : il ne reste qu'à envoyer l'e-mail. Rien ne s'ouvre ? Écrivez-nous à <a href="mailto:contact@shide.eu">contact@shide.eu</a>.</p>
-          <button type="button" onClick="{{ resetForm }}" style="margin-top:4px;background:#EEF2FF;border:none;border-radius:999px;padding:12px 22px;font:inherit;font-size:16px;font-weight:600;color:#141A2E;cursor:pointer" style-hover="background:#DCE4FF">Modifier ma demande</button>
-        </div>
-      </sc-if>
       <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
         <form onSubmit="{{ submitForm }}" style="display:grid;gap:16px">
-          <fieldset style="margin:0;padding:0;border:none;display:grid;gap:10px">
-            <legend style="padding:0;margin-bottom:10px;font-size:14px;font-weight:600;color:#141A2E">Votre demande</legend>
-            <div style="display:flex;flex-wrap:wrap;gap:10px">
-              <label style="flex:1 1 200px;display:flex;align-items:center;gap:10px;min-height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font-size:16px;color:#141A2E;cursor:pointer"><input type="radio" name="demande" value="pilote" checked="{{ isPilot }}" onChange="{{ onField }}" style="width:18px;height:18px;margin:0;accent-color:#2F5BEA">Participer au programme pilote</label>
-              <label style="flex:1 1 200px;display:flex;align-items:center;gap:10px;min-height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font-size:16px;color:#141A2E;cursor:pointer"><input type="radio" name="demande" value="demo" checked="{{ isDemo }}" onChange="{{ onField }}" style="width:18px;height:18px;margin:0;accent-color:#2F5BEA">Voir une démo de 15 minutes</label>
-            </div>
-          </fieldset>
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" value="{{ f._honey }}" onChange="{{ onField }}" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
-            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Nom et prénom<input name="nom" required="required" autocomplete="name" value="{{ f.nom }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
-            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">E-mail professionnel<input name="email" type="email" required="required" autocomplete="email" value="{{ f.email }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Prénom<input name="prenom" required="required" autocomplete="given-name" value="{{ f.prenom }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Nom<input name="nom" required="required" autocomplete="family-name" value="{{ f.nom }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
             <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Entreprise<input name="entreprise" required="required" autocomplete="organization" value="{{ f.entreprise }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
-            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Fonction<select name="fonction" required="required" value="{{ f.fonction }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff;appearance:auto" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"><option value="">Choisir…</option><option>DSI</option><option>RSSI</option><option>DPO</option><option>Direction générale</option><option>Autre</option></select></label>
+            <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">E-mail professionnel<input name="email" type="email" required="required" autocomplete="email" value="{{ f.email }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
           </div>
-          <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Nombre de postes <span style="font-weight:400;color:#4A5268">(facultatif)</span><select name="postes" value="{{ f.postes }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff;appearance:auto" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"><option value="">Choisir…</option><option>Moins de 50</option><option>50 à 250</option><option>250 à 1000</option><option>Plus de 1000</option></select></label>
+          <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Poste<input name="poste" required="required" autocomplete="organization-title" value="{{ f.poste }}" onChange="{{ onField }}" style="width:100%;height:50px;border:1px solid #D8DCE6;border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:#141A2E;background:#fff" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></label>
           <label style="display:grid;gap:7px;font-size:14px;font-weight:600;color:#141A2E">Message <span style="font-weight:400;color:#4A5268">(facultatif)</span><textarea name="message" rows="4" value="{{ f.message }}" onChange="{{ onField }}" placeholder="Contexte, questions…" style="width:100%;border:1px solid #D8DCE6;border-radius:12px;padding:12px 14px;font:inherit;font-size:16px;color:#141A2E;resize:vertical" style-focus="border-color:#2F5BEA;outline:none;box-shadow:0 0 0 3px #DCE4FF"></textarea></label>
           <sc-if value="{{ formInvalid }}" hint-placeholder-val="{{ false }}">
-            <p role="alert" style="margin:0;font-size:14px;color:#B42318">Merci de renseigner votre nom, un e-mail valide et votre entreprise.</p>
+            <p role="alert" style="margin:0;font-size:14px;color:#B42318">Merci de renseigner tous les champs obligatoires avec un e-mail valide.</p>
           </sc-if>
           <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
             <p role="alert" style="margin:0;font-size:14px;color:#B42318">L'envoi a échoué. Réessayez ou écrivez-nous à <a href="mailto:contact@shide.eu">contact@shide.eu</a>.</p>
@@ -477,45 +463,25 @@ summary:hover>span:first-child{color:#2448D8}
 </footer>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-// Laisser vide : le formulaire ouvre un e-mail prérempli vers CONTACT_EMAIL.
-// Renseigné : les champs sont envoyés en POST JSON à cette adresse (à ajouter aussi dans connect-src de la CSP).
-const FORM_ENDPOINT = "";
-const CONTACT_EMAIL = 'contact@shide.eu';
-const DEMANDES = { pilote: 'Participer au programme pilote', demo: 'Voir une démo de 15 minutes' };
+// Les demandes sont envoyées en POST JSON à cette adresse (domaine à autoriser dans connect-src de la CSP).
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/contact@shide.eu';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const REQUIRED = ['prenom', 'nom', 'entreprise', 'email', 'poste'];
 
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, f: { demande: 'pilote', nom: '', email: '', entreprise: '', fonction: '', postes: '', message: '', _honey: '' }, status: 'idle' };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1200, menuOpen: false, f: { prenom: '', nom: '', entreprise: '', email: '', poste: '', message: '', _honey: '' }, status: 'idle' };
   async submit(e) {
     e.preventDefault();
     const { _honey, ...f } = this.state.f;
     if (_honey) { this.setState({ status: 'sent' }); return; }
-    if (!f.nom.trim() || !EMAIL_RE.test(f.email.trim()) || !f.entreprise.trim()) { this.setState({ status: 'invalid' }); return; }
-    const subject = `[Shide] ${f.demande === 'demo' ? 'Demande de démo' : 'Programme pilote'} - ${f.entreprise.trim()}`;
-    const endpoint = FORM_ENDPOINT.trim();
-    if (!endpoint) {
-      const body = [
-        `Demande : ${DEMANDES[f.demande]}`,
-        `Nom : ${f.nom}`,
-        `E-mail : ${f.email}`,
-        `Entreprise : ${f.entreprise}`,
-        `Fonction : ${f.fonction || 'non précisée'}`,
-        `Nombre de postes : ${f.postes || 'non précisé'}`,
-        '',
-        `Message : ${f.message || '(aucun)'}`,
-      ].join('\n');
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      this.setState({ status: 'mailto' });
-      return;
-    }
+    if (REQUIRED.some(k => !f[k].trim()) || !EMAIL_RE.test(f.email.trim())) { this.setState({ status: 'invalid' }); return; }
     this.setState({ status: 'sending' });
     try {
-      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...f, demande: DEMANDES[f.demande], _subject: subject }) });
+      const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...f, _template: 'table', _subject: `[Shide] Nouvelle demande - ${f.entreprise.trim()}` }) });
       const d = await r.json().catch(() => ({}));
-      this.setState({ status: r.ok && (d.success === undefined || String(d.success) === 'true') ? 'sent' : 'error' });
+      this.setState({ status: r.ok && String(d.success) === 'true' ? 'sent' : 'error' });
     } catch (err) { this.setState({ status: 'error' }); }
   }
-  choose(demande) { this.setState(s => ({ menuOpen: false, status: s.status === 'sending' ? s.status : 'idle', f: { ...s.f, demande } })); }
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth });
     window.addEventListener('resize', this.onResize);
@@ -530,17 +496,11 @@ class Component extends DCLogic {
       showMobileMenu: !isDesktop && this.state.menuOpen,
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
-      choosePilot: () => this.choose('pilote'),
-      chooseDemo: () => this.choose('demo'),
       f: this.state.f,
-      isPilot: this.state.f.demande === 'pilote',
-      isDemo: this.state.f.demande === 'demo',
       onField: (e) => { const { name, value } = e.target; this.setState(s => ({ f: { ...s.f, [name]: value } })); },
       submitForm: (e) => this.submit(e),
-      resetForm: () => this.setState({ status: 'idle' }),
       formSent: this.state.status === 'sent',
-      formMailto: this.state.status === 'mailto',
-      formOpen: this.state.status !== 'sent' && this.state.status !== 'mailto',
+      formOpen: this.state.status !== 'sent',
       formInvalid: this.state.status === 'invalid',
       formError: this.state.status === 'error',
       sending: this.state.status === 'sending',
